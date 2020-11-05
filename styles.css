@@ -28,3 +28,12 @@
     font-size: 1em;
     margin-left: 0.4em;
 }
+
+
+.tag-container input{
+    flex: 1;
+    outline: none;
+    font-size: 1em;
+    padding: 0.5em;
+    border: 0;
+}
