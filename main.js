@@ -35,7 +35,7 @@ function reset(){
 
 function addTags(){
     reset();
-    tags.forEach(function (value){
+    tags.slice().reverse().forEach(function (value){
         const tag = createTag(value);
         tagContainer.prepend(tag);
     })
