@@ -5,7 +5,10 @@
         </div>
  */
 
-const tagContainer = document.querySelector('.tag-container')
+const tagContainer = document.querySelector('.tag-container');
+const input = document.querySelector('.tag-container input');
+
+
 
 function createTag(text){
     const div = document.createElement('div');
@@ -24,4 +27,12 @@ function createTag(text){
 }
 
 
-tagContainer.prepend(createTag('CSS'))
+
+
+input.addEventListener('keyup', function (e){
+    if(e.key === 'Enter'){
+        const tag = createTag(input.value);
+        tagContainer.prepend(tag);
+        input.value = '';
+    }
+})
