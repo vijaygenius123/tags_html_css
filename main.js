@@ -18,6 +18,7 @@ function createTag(text){
     span.innerHTML = text;
     const closeBtn = document.createElement('i');
     closeBtn.setAttribute('class', 'material-icons');
+    closeBtn.setAttribute('data-item', text);
     closeBtn.innerHTML = 'close';
 
     div.appendChild(span);
@@ -33,7 +34,7 @@ function reset(){
 }
 
 
-function addTags(){
+function renderTags(){
     reset();
     tags.slice().reverse().forEach(function (value){
         const tag = createTag(value);
@@ -45,7 +46,17 @@ function addTags(){
 input.addEventListener('keyup', function (e){
     if(e.key === 'Enter'){
         tags.push(input.value)
-        addTags();
+        renderTags();
         input.value = '';
+    }
+})
+
+
+document.addEventListener('click', function (e){
+    if(e.target.tagName === 'I'){
+        const value = e.target.getAttribute('data-item');
+        const index = tags.indexOf(value);
+        tags.splice(index, 1);
+        renderTags();
     }
 })
