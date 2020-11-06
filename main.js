@@ -8,7 +8,7 @@
 const tagContainer = document.querySelector('.tag-container');
 const input = document.querySelector('.tag-container input');
 
-
+var tags = []
 
 function createTag(text){
     const div = document.createElement('div');
@@ -26,13 +26,26 @@ function createTag(text){
     return div
 }
 
+function reset(){
+    document.querySelectorAll('.tag').forEach(function (tag){
+        tag.remove();
+    })
+}
 
+
+function addTags(){
+    reset();
+    tags.forEach(function (value){
+        const tag = createTag(value);
+        tagContainer.prepend(tag);
+    })
+}
 
 
 input.addEventListener('keyup', function (e){
     if(e.key === 'Enter'){
-        const tag = createTag(input.value);
-        tagContainer.prepend(tag);
+        tags.push(input.value)
+        addTags();
         input.value = '';
     }
 })
